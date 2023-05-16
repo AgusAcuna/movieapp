@@ -1,39 +1,57 @@
 class MovieModel {
-  MovieModel({
-    required bool adult,
-    required String backdropPath,
-    required List<dynamic> genreIds,
-    required int id,
-    required String originalLanguage,
-    required String originalTitle,
-    required String overview,
-    required double popularity,
-    required String posterPath,
-    required String releaseDate,
-    required String title,
-    required String lowerCaseTitle,
-    required bool video,
-    required double voteAverage,
-    required int voteCount,
-  });
+  //final bool adult;
+  //final String backdropPath;
+  //final List<dynamic> genreIds;
+  final int id;
+  //final String originalLanguage;
+  //final String originalTitle;
+  //final String overview;
+  //final double popularity;
+  final String posterPath;
+  final String releaseDate;
+  final String title;
+  //final bool video;
+  final double voteAverage;
+  //final int voteCount;
 
-  factory MovieModel.fromJson(dynamic moviesJson) {
+  MovieModel(
+      {//required this.adult,
+      //required this.backdropPath,
+      //required this.genreIds,
+      required this.id,
+      //required this.originalLanguage,
+     // required this.originalTitle,
+      //required this.overview,
+      //required this.popularity,
+      required this.posterPath,
+      required this.releaseDate,
+      required this.title,
+      //required this.video,
+      required this.voteAverage,
+      //required this.voteCount
+    });
+
+  factory MovieModel.fromJson(dynamic json) {
     return MovieModel(
-      adult: moviesJson['adult'],
-      backdropPath: moviesJson['backdrop_path'],
-      genreIds: moviesJson['genre_ids'],
-      id: moviesJson['id'],
-      originalLanguage: moviesJson['original_language'],
-      originalTitle: moviesJson['original_title'],
-      overview: moviesJson['overview'],
-      popularity: moviesJson['popularity'].toDouble(),
-      posterPath: moviesJson['poster_path'],
-      releaseDate: moviesJson['release_date'],
-      title: moviesJson['title'],
-      video: moviesJson['video'],
-      voteAverage: moviesJson['vote_average'].toDouble(),
-      voteCount: moviesJson['vote_count'],
-      lowerCaseTitle: (moviesJson['title'] as String).toLowerCase(),
+      //adult: json['adult'] ?? false,
+      //backdropPath: json['backdrop_path']??'',
+      //genreIds: json['genre_ids'] ?? [],
+      id: json['id'] ?? 0,
+      //originalLanguage: json['original_language']??'',
+      //originalTitle: json['original_title']??'',
+      //overview: json['overview']??'',
+      //popularity: json['popularity'].toDouble() ?? 0.0,
+      posterPath: json['poster_path']??'',
+      releaseDate: json['release_date']??'',
+      title: json['title'] as String ??'',
+      //video: json['video'] ?? false,
+      voteAverage: json['vote_average'].toDouble() ?? 0.0,
+      //voteCount: json['vote_count'] ?? 0,
     );
+  }
+
+  @override
+  String toString(){
+    return 'Movie {id: $id, title: $title, poster:$posterPath, releaseDate:$releaseDate, votes:$voteAverage}';
   }
 }
